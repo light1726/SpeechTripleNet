@@ -1,0 +1,38 @@
+dataset: VCTK
+
+path:
+  corpus_path: "/path/to/vctk"  # set to the root directory of the unzipped VCTK
+  preprocessed_path: "/path/to/preprocessed/VCTK"  # set to the directory to hold the features of VCTK
+  dataset_summary: "/path/to/preprocessed/VCTK/dataset-info.json"
+
+preprocessing:
+  n_val_spk: 10
+  n_test_spk: 10
+  audio:
+    sampling_rate: 22050
+    max_wav_value: 32768.0
+  stft:
+    filter_length: 1024
+    hop_length: 256
+    win_length: 1024
+  mel:
+    n_mel_channels: 80
+    mel_fmin: 0
+    mel_fmax: 8000 # please set to 8000 for HiFi-GAN vocoder set to null for MelGAN vocoder
+
+  mel_hg:
+    num_mels: 80
+    num_freq: 1025
+    n_fft: 1024
+    hop_size: 256
+    win_size: 1024
+    sampling_rate: 22050
+    fmin: 0
+    fmax: 8000
+  sil_top_db: 30.
+  lower_f0: 30
+  upper_f0: 300
+  segment_size: 256
+  chunk_size: 32
+  n_pitch_bins: 8
+  n_energy_bins: 8

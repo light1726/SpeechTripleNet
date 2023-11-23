@@ -1,0 +1,75 @@
+variance_predictor:
+  filter_size: 256
+  kernel_size: 3
+  dropout: 0.5
+
+vocoder:
+  model: "HiFi-GAN" # support 'HiFi-GAN'
+  speaker: "vctk" # support  'vctk'
+
+prior:
+  con_dim: 128
+  spk_dim: 128
+  pit_dim: 8
+  ene_dim: 8
+
+transformer:
+  n_phone: 211
+  max_text_len: 128
+  encoder_layer: 4
+  encoder_head: 2
+  encoder_hidden: 256
+  decoder_layer: 6
+  decoder_head: 2
+  decoder_hidden: 256
+  max_mel_len: 2048
+  conv_filter_size: 1024
+  conv_kernel_size: [9, 1]
+  encoder_dropout: 0.2
+  decoder_dropout: 0.2
+
+spk_encoder:
+  h_channels: 256
+  conv_kernels: [3, 3, 5, 5]
+  paddings: [1, 1, 2, 2]
+  pooling_kernels: [2, 2, 2, 2]
+  pooling_type: 'mean'
+  activation: 'relu'
+
+prosody_encoder:
+  h_channels: 256
+  conv_kernels: [3, 3, 5, 5]
+  paddings: [1, 1, 2, 2]
+  activation: 'relu'
+  n_class: 8
+  temperature: 0.1
+  n_pit_class: 8
+  n_ene_class: 8
+
+content_conv_sa_encoder:
+  h_channels: 256
+  conv_kernels: [3, 3]
+  paddings: [1, 1]
+  activation: 'relu'
+  sa_layer: 2
+  sa_head: 2
+  sa_hidden: 256
+  sa_filter_size: 1024
+  sa_kernel_size: [9, 1]
+  sa_dropout: 0.2
+  # parameters for discrete representations
+  n_class: 64
+  embd_dim: 128
+  temperature: 0.1
+
+conv_sa_decoder:
+  h_channels: 256
+  conv_kernels: [3, 3]
+  paddings: [1, 1]
+  activation: 'relu'
+  sa_layer: 2
+  sa_head: 2
+  sa_hidden: 256
+  sa_filter_size: 1024
+  sa_kernel_size: [9, 1]
+  sa_dropout: 0.2

@@ -1,0 +1,37 @@
+path:
+  ckpt_path: "ckpt/VCTK"
+  log_path: "log/VCTK"
+  result_path: "result/VCTK"
+optimizer:
+  batch_size: 64
+  learning_rate: 0.0001
+  betas: [0.9, 0.98]
+  eps: 0.000000001
+  weight_decay: 0.0
+  grad_clip_thresh: 1.0
+  grad_acc_step: 1
+  warm_up_step: 4000
+  anneal_steps: []
+  anneal_rate: 1.0
+  con_gamma: 100.
+  spk_gamma: 10.
+  pro_gamma: 10.
+  pit_gamma: 10.
+  ene_gamma: 10.
+  pro_reg_w: 100.
+  pit_reg_w: 100.
+  ene_reg_w: 100.
+  con_mi: 1.3
+  spk_mi: 60.
+  pro_mi: 3.0
+  pit_mi: 1.2
+  ene_mi: 1.8
+
+step:
+  total_step: 200000
+  mi_stop: 20000
+  log_step: 500
+  val_step: 5000
+  save_step: 50000
+misc:
+  seed: 1234
